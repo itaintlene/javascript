@@ -6,8 +6,12 @@
 
 // to format into easyyy prettyyy way, use json formatter tools
 
-{
-    "name":"ginny",
-    "age":"16",
-    "location":"usa",
-}
+// {
+//     "name":"ginny",
+//     "age":"16",
+//     "location":"usa",
+// }
+
+// JSON.stringify(ObjectName) to convert objects (and other primitive datatypes) into JSON. (except functions,
+// undefined and symbols)
+// JSON.parse(ObjectName) to convert JSON back into an object.
