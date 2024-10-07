@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | EDITING AND REMOVING ELEMENTS USING DOM</title>
+    <style>
+        body{
+            background-color: #212121;
+            color: #fff
+        }
+    </style>
+</head>
+<body>
+    <ul class="wildlife">
+        <li>tiger</li>
+        <li>venus fly trap</li>
+    </ul>
+</body>
+<script>
+    function intoTheWild(creature){
+        const li=document.createElement('li');
+        li.innerHTML = `${creature}`
+        document.querySelector('.wildlife').appendChild(li)
+    }
+    intoTheWild("anaconda")
+    intoTheWild("creepers")
+// this takes too much time and space to traverse in large projects (non optimal approach)
+
+// using .createTextNode is more optimal than innerHTML
+    function optimalIntoTheWild(creature){
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(creature)) // saved lil space here
+        document.querySelector('.wildlife').appendChild(li)
+    }
+    optimalIntoTheWild("earth worms")
+
+
+// Editing an already existing node element
+    const secondCreature = document.querySelector("li:nth-child(2)") // css selectors babe
+    console.log(secondCreature); 
+    //secondCreature.innerHTML = "humans" // easier but less optimal
+    const newli = document.createElement('li')
+    newli.textContent = "humans" // creates a new list item mojo
+    secondCreature.replaceWith(newli)
+
+    const firstCreature = document.querySelector("li:first-child")
+    firstCreature.outerHTML = '<li>elephant</li>'
+
+// Removing an element
+    const lastCreature = document.querySelector('li:last-child')
+    lastCreature.remove() // removed earthworms
+
+</script>
+</html>
