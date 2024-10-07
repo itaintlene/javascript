@@ -1,10 +1,10 @@
 // dates: to store creation/modification times, to measure time, or just to print out the current date.
 
 let todaysDate = new Date()
-console.log(todaysDate); //lowkey unreadable
-console.log(todaysDate.toString()); // converts to normal date and time
-console.log(todaysDate.toDateString()); // only date
-console.log(todaysDate.toLocaleString()); // 
+// console.log(todaysDate); //lowkey unreadable
+// console.log(todaysDate.toString()); // converts to normal date and time
+// console.log(todaysDate.toDateString()); // only date
+// console.log(todaysDate.toLocaleString()); // 
 
 // *************
 
@@ -18,12 +18,12 @@ let myTimeStamp = Date.now()
 
 // console.log(myTimeStamp);
 // console.log(myCreatedDate.getTime());
-// console.log(Math.floor(Date.now()/1000));
+console.log(Math.floor(Date.now()/1000));
 
 let newDate = new Date()
-console.log(newDate);
-console.log(newDate.getMonth() + 1);
-console.log(newDate.getDay());
+// console.log(newDate);
+// console.log(newDate.getMonth() + 1);
+// console.log(newDate.getDay());
 
 // `${newDate.getDay()} and the time `
 
