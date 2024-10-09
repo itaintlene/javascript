@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML events</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>RANDOM IMAGES</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    // events are actions or occurrences that happen in the browser or a web page. javaScript can listen for 
+    // these events and trigger specific code when they occur. events are typically user actions like clicking, 
+    // typing, or loading a page.
+
+    // javascript events run sequentially. some exceptions are there .
+    // avoid embedding events in the html code. alway use script tag or connect .js file to html
+
+    // now you can also do it like this(:) but using onlick event listener would be better.
+    // document.getElementById('owl').onclick( function() {
+    //     alert("owl clicked.")
+    // })
+
+    // eventListener !!! has so many more features + propogation
+    document.getElementById('owl').addEventListener('click', function() {
+        alert("owl clicked.")
+    })
+
+    // another way: attachEvent (was common during internet explorer times)
+    // jquery has .on event listener that wporked in same way
+
+    //back to addEventListener()
+
+    document.getElementById('owl').addEventListener('click', function(event) { // 'event' param
+        console.log(event)
+    }) // we get browser and environment events thru the event parameter
+
+    // there are so many questions related to onClick events that can be done by normal js and no react
+    // example: display time stamp when the user clicked on an image // use target
+    // create an app where theres a div and wherever i click in that div, a circle is formed // use view
+
+    // read about these events that can be used: type (keyboard, mouse, form, window etc), timestamp (how to manipulate), 
+    // defaultPrevented(to prevent default behaviour of tags: auto submition of froms etc), target, toElement, 
+    // srcElement***, currentTarget, 
+    // clientX, clientY, screenX, screenY, (position related: interview perspective)
+    // altkey, ctrlkey, shiftkey, 
+    // keyCode
+
+    // EVENT PROPOGATION****: event bubbling phase and event capturing phase
+    document.getElementById('owl').addEventListener('click', function(event) { // 'event' param
+        console.log(event)
+    }, false)                   // this third parameter of addEventListener is true or false aka event propogation
+    // false is a default and its most common so we usually skip typing the third parameter
+    
+    // BUBBLING MODE (default) what will get printed when:
+
+    document.getElementById('images').addEventListener('click', function(event) { // 'event' param
+        // console.log("clicked inside the ul")
+    }, false) 
+
+    document.getElementById('owl').addEventListener('click', function(event) { // 'event' param
+        // console.log("owl clicked")
+    }, false) 
+
+    // bubbling happens when owl photo is clicked and first "owl clicked" is logged then "clicked inside the ul"
+
+
+    // CAPTURING MODE, turn false to true
+
+    document.getElementById('images').addEventListener('click', function(event) { // 'event' param
+        // console.log("clicked inside the ul")
+    }, true) 
+
+    document.getElementById('owl').addEventListener('click', function(event) { // 'event' param
+        // console.log("owl clicked")
+    }, true) 
+
+    // capturing happens when owl photo is clicked and first "clicked inside the ul" is logged then "owl clicked"
+    
+// now you can choose what propogation is needed when according to the usecase
+
+    // to not run thru all events that can be logged and only stick to one we can use stopPropogation
+
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log("owl clicked");
+    //     e.stopPropagation()
+    // }, false)
+
+// ***************************** //
+    // preventDefault event listener: now on clicking google on webpage, it wont link you to google website
+    document.getElementById('google').addEventListener('click', function(e) { 
+        e.preventDefault();
+        console.log("google clicked.");
+    }) 
+
+
+</script>
+</html>
